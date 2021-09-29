@@ -39,6 +39,32 @@ We fine-tune each model using [HuggingFace](https://huggingface.co/transformers/
 
 To create generations for each model, use:
 ```bash
+export NUM_TO_EVAL=0
+python evaluation/generate_from_models.py \
+    --model <path-to-gpt2-model> \
+    --gen_type style_transfer_ing_multi_rule \
+    --set test1k \
+    --num_to_eval $NUM_TO_EVAL \
+    --num_return_sequences 5 \
+    --topk 40 \
+    --topp 1 \
+    --rep 1 \
+    --temp 1
+```
+* NUM_TO_EVAL=0 runs generations using the entire prompt file, while specifying a number will stop after that many lines
+* The gen_type above uses our best model; other gen_types give ablations of our best model
+
+## Baselines
+In the paper, we compare to several baseline models:
+* [PPLM](https://arxiv.org/abs/1912.02164) (see `pplm` folder for implementation details)
+* [CTRL](https://arxiv.org/abs/1909.05858) (see `ctrl` folder for implementation details)
+* [Seq2seq with copy](https://arxiv.org/abs/1707.01161) ([code](https://github.com/harsh19/Shakespearizing-Modern-English))
+* [Transformer](https://arxiv.org/abs/1706.03762) ([code](https://github.com/gooppe/transformer-summarization))
+
+## Evaluation
+Code for evaluating the models in terms of perplexity, diversity, and dietary constraint adherence is in `evaluation`.
+
+![header image](./imgs/rewrite-comparison.png)
 
 ## Contributing
 
