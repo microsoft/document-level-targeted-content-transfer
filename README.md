@@ -1,14 +1,44 @@
-# Project
+# Recipe Rewriting
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repository contains the code for the EMNLP 2020 paper "Substance over Style: Document-Level Targeted Content Transfer" by Allison Hegel, Sudha Rao, Asli Celikyilmaz, and Bill Dolan ([arXiv](https://arxiv.org/abs/2010.08618)).
 
-As the maintainer of this project, please make a few updates:
+![header image](./imgs/recipe-rewrite-eg.png)
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## Citation
+```
+@inproceedings{
+Hegel2020Substance,
+title={Substance over Style: Document-Level Targeted Content Transfer},
+author={Allison Hegel and Sudha Rao and Asli Celikyilmaz and Bill Dolan},
+booktitle={Proceedings of the Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+year={2020}
+```
+
+## Setup
+
+Requirements
+* Python 3.6
+
+```bash
+pip install -r requirements.txt
+```
+
+## Data Preparation
+
+To prepare scraped data for training:
+* Scrape recipes or use existing recipe datasets
+* Clean recipes and put them in a standard format (see `data_cleaning`)
+* Use `make_next_step_data.py` to generate training data formatted for the No-Source Rewriter
+* Use `make_next_ing_data.py` to generate training data formatted for the ingredient prompt model
+* Use `make_style_transfer_data.py` to generate training data for the Contextual Rewriter model and its ablations
+
+## Using the Model
+![header image](./imgs/model-diagram.png)
+
+We fine-tune each model using [HuggingFace](https://huggingface.co/transformers/v2.0.0/examples.html#language-model-fine-tuning).
+
+To create generations for each model, use:
+```bash
 
 ## Contributing
 

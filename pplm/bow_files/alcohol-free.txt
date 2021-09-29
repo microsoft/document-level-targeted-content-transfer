@@ -1,0 +1,14 @@
+alcohol-free
+vinegar
+ginger
+juice
+kombucha
+mocktail
+pellegrino
+water
+coke
+soda
+coffee
+cranberry
+virgin
+tea
